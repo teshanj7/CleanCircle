@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PaymentPageActivity">
+
+    <TextView
+        android:id="@+id/paymentheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/PaymentHeading"
+        android:textAlignment="center"
+        android:textColor="#0B0B0B"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/paymentheading"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cleancircle_logo" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="@dimen/rect1Width"
+        android:layout_height="@dimen/payrectHeight"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentheading"
+        app:srcCompat="@drawable/green_rectangle" />
+
+    <EditText
+        android:id="@+id/CCno"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/baseline_credit_card_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/PayCCno"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentheading" />
+
+    <EditText
+        android:id="@+id/ccHolder"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/baseline_person_add_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/PayCCname"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentheading" />
+
+    <EditText
+        android:id="@+id/expDate"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/baseline_date_range_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/PayExpDate"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ccHolder"
+        app:layout_constraintStart_toStartOf="@+id/ccHolder"
+        app:layout_constraintTop_toBottomOf="@+id/ccHolder" />
+
+    <EditText
+        android:id="@+id/cvv"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/baseline_security_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/PayCvv"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/expDate"
+        app:layout_constraintStart_toStartOf="@+id/expDate"
+        app:layout_constraintTop_toBottomOf="@+id/expDate" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/check_box"
+        app:layout_constraintEnd_toEndOf="@+id/cvv"
+        app:layout_constraintStart_toStartOf="@+id/cvv"
+        app:layout_constraintTop_toBottomOf="@+id/cvv" />
+
+    <Button
+        android:id="@+id/btn_submit_C"
+        android:layout_width="@dimen/btn_register"
+        android:layout_height="@dimen/btn_register_height"
+        android:layout_marginTop="132dp"
+        android:backgroundTint="@color/btnBlack"
+        android:text="@string/PayBtn"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/checkBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

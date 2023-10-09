@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "UEEProjCleanCircle"
+rootProject.name = "example"
 include(":app")
  

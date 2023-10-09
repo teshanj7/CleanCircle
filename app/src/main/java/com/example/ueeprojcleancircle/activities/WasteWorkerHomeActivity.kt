@@ -1,12 +1,12 @@
 package com.example.ueeprojcleancircle.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ueeprojcleancircle.R
 
-class DashboardPageActivity : AppCompatActivity() {
+class WasteWorkerHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard_page)
+        setContentView(R.layout.activity_wasteworker_home)
     }
 }

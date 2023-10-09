@@ -68,7 +68,8 @@
         android:textColor="#2D2F5C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateTextHeading6" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateTextHeading6"
+        android:spinnerMode="dropdown"/>
 
     <EditText
         android:id="@+id/userName"
@@ -125,12 +126,12 @@
         app:layout_constraintTop_toBottomOf="@+id/userPASS" />
 
     <Button
-        android:id="@+id/btn_loginW"
+        android:id="@+id/btn_logintosignup"
         android:layout_width="@dimen/btn_register"
         android:layout_height="@dimen/btn_register_height"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/btnBlack"
-        android:text="@string/LoginWBtn"
+        android:text="@string/signup_id"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="0.0"

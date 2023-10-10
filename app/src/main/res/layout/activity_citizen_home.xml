@@ -86,10 +86,10 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="11dp"
-                android:backgroundTint="@color/main_green"
+                android:backgroundTint="@color/rectGreen"
                 android:padding="3dp"
                 android:shadowColor="@android:color/transparent"
-                android:text="Marketplace"
+                android:text="@string/CitizenBtnActive"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -103,7 +103,7 @@
                 android:backgroundTint="#e1e1e1"
                 android:padding="3dp"
                 android:shadowColor="@android:color/transparent"
-                android:text="Edit Profile"
+                android:text="@string/CitizenBtnProfile"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -153,14 +153,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/main_green">
+                android:background="@color/rectGreen">
 
                 <ImageView
                     android:id="@+id/image_view1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:contentDescription="Sold items icon"
-                    android:src="@drawable/baseline_sell_24_um"
+                    android:src="@drawable/baseline_credit_card_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -172,7 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sold Items"
+                    android:text="@string/CitizenSchedule"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -202,14 +202,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/main_green">
+                android:background="@color/rectGreen">
 
                 <ImageView
                     android:id="@+id/image_view21"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:contentDescription="Learn icon"
-                    android:src="@drawable/baseline_library_books_24_um"
+                    android:src="@drawable/baseline_email_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView21"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -221,7 +221,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="LEARN"
+                    android:text="@string/CitizenReport"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -264,14 +264,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/main_green">
+                android:background="@color/rectGreen">
 
                 <ImageView
                     android:id="@+id/image_view22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:contentDescription="Add item icon"
-                    android:src="@drawable/baseline_add_24_um"
+                    android:src="@drawable/baseline_date_range_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView22"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -283,7 +283,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Add item"
+                    android:text="@string/CitizenRecycle"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -313,14 +313,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/main_green">
+                android:background="@color/rectGreen">
 
                 <ImageView
                     android:id="@+id/image_view23"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:contentDescription="Help icon"
-                    android:src="@drawable/baseline_help_center_24_um"
+                    android:src="@drawable/baseline_location_on_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView23"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -332,7 +332,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/help"
+                    android:text="@string/CitizenInfo"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -357,7 +357,6 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -378,19 +377,6 @@
             android:text="TextView"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="@color/main_green"
-        app:menu="@menu/bottom_nav_farmer_um" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

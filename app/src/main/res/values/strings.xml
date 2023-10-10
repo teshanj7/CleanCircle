@@ -36,4 +36,21 @@
     <string name="LoginBtn">LOGIN</string>
     <string name="LoginWBtn">LOGIN AS WASTAGE WORKER</string>
 
+    <string name="CitizenHomeText">“For a better tomorrow with green”</string>
+    <string name="CitizenInfo">Info</string>
+    <string name="CitizenRecycle">Recycle</string>
+    <string name="CitizenReport">Report</string>
+    <string name="CitizenSchedule">Schedule Pickup</string>
+    <string name="CitizenBtnActive">Active Request</string>
+    <string name="CitizenBtnProfile">Profile</string>
+
+    <string name="WorkerSentence">You can select your garbage \ntype here.</string>
+    <string name="btnWorkerHome">Show Map</string>
+    <string-array name="waste_type">
+        <item>Select Waste Type</item>
+        <item>Polythene</item>
+        <item>Food Wastage</item>
+        <item>Plastic</item>
+        <item>Other</item>
+    </string-array>
 </resources>

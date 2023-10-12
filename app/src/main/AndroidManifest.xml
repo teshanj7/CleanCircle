@@ -32,7 +32,7 @@
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".activities.SignUpActivity" -->
         <!-- android:exported="false" > -->
-        <!-- </activity> -->
+        <!-- </activity> ok -->
         <activity
             android:name=".activities.IndexPageActivity"
             android:exported="false" />

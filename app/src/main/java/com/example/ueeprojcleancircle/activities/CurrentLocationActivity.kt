@@ -1,4 +1,3 @@
-
 package com.example.ueeprojcleancircle.activities
 
 import android.content.Context
@@ -6,34 +5,38 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.example.ueeprojcleancircle.databinding.ActivityCurrentLocationBinding
+import com.example.ueeprojcleancircle.R
 
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.example.ueeprojcleancircle.databinding.ActivityCurrentLocationBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
-class CurrentLocationActivity: AppCompatActivity() {
+class CurrentLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var binding : ActivityCurrentLocationBinding
+    private lateinit var mMap: GoogleMap
+    private lateinit var binding: ActivityCurrentLocationBinding
+
     // The entry point to the Fused Location Provider.
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
-    private lateinit var latitude : Number
-    private lateinit var longitude : Number
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+    private var mapReady = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Retrieve the content view that renders the map.
         binding = ActivityCurrentLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -42,36 +45,33 @@ class CurrentLocationActivity: AppCompatActivity() {
 
         getCurrentLocation()
 
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     private fun getCurrentLocation() {
-
-        if(checkPermission()){
-            if(isLocationEnabled()){
-                fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){
-                        task -> val location: Location?=task.result
-                    if (location == null){
+        if (checkPermission()) {
+            if (isLocationEnabled()) {
+                fusedLocationProviderClient.lastLocation.addOnCompleteListener(this) { task ->
+                    val location: Location? = task.result
+                    if (location == null) {
                         Toast.makeText(this, "Unable to get Location", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
+                    } else {
                         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                         latitude = location.latitude
                         longitude = location.longitude
-                        binding.latitude.text =  "" + location.latitude
-                        binding.longitude.text = "" + location.longitude
+                        updateMapLocation()
                     }
                 }
-
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Turn on location", Toast.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
-        }
-        else{
+        } else {
             requestPermission()
-
         }
     }
 
@@ -121,5 +121,29 @@ class CurrentLocationActivity: AppCompatActivity() {
 
     companion object {
         private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
+    }
+
+//    override fun onMapReady(googleMap: GoogleMap) {
+//        val location = LatLng(latitude.toDouble(), longitude.toDouble())
+//        googleMap.addMarker(
+//            MarkerOptions()
+//                .position(location)
+//                .title("Marker in Sydney")
+//        )
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+//    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        mapReady = true
+        updateMapLocation()
+    }
+
+    private fun updateMapLocation() {
+        if (mapReady) {
+            val location = LatLng(latitude, longitude)
+            mMap.addMarker(MarkerOptions().position(location).title("Your Location"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+        }
     }
 }

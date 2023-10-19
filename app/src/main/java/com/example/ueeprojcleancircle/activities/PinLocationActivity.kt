@@ -8,27 +8,41 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.ueeprojcleancircle.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.ueeprojcleancircle.databinding.ActivityCurrentLocationBinding
+import com.example.ueeprojcleancircle.databinding.ActivityPinLocationBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.example.ueeprojcleancircle.models.ScheduleForm
+import com.example.ueeprojcleancircle.models.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
-class CurrentLocationActivity : AppCompatActivity(), OnMapReadyCallback {
+
+//add Pinning the location without GPS.................................
+class PinLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityCurrentLocationBinding
+    private lateinit var binding: ActivityPinLocationBinding
 
     // The entry point to the Fused Location Provider.
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var dbRef: DatabaseReference
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var currentUser: FirebaseUser
 
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
@@ -37,11 +51,23 @@ class CurrentLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCurrentLocationBinding.inflate(layoutInflater)
+        binding = ActivityPinLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        firebaseAuth = FirebaseAuth.getInstance()
+        currentUser = firebaseAuth.currentUser!!
+        Log.d("User", currentUser.email.toString())
+
+//        getCurrentUser()
+
+        val estimatedWeight = intent.getStringExtra("estimatedWeight")
+        val wasteType = intent.getStringExtra("wasteType")
+        val date = intent.getStringExtra("dateStr")
+        val remarks = intent.getStringExtra("remarks")
+        val nic = intent.getStringExtra("nic")
 
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        dbRef = FirebaseDatabase.getInstance().getReference("PickupRequests")
 
         getCurrentLocation()
 
@@ -49,6 +75,54 @@ class CurrentLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        binding.pinLocation.setOnClickListener {
+            var status = "Open"
+            var userEmail = currentUser.email
+            val pickupRequests = ScheduleForm(nic, userEmail, wasteType, estimatedWeight, date, remarks, latitude, longitude, status)
+
+                if (nic != null) {
+                    dbRef.child(nic).setValue(pickupRequests).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+
+                            Toast.makeText(this, "Your pickup request successful", Toast.LENGTH_SHORT).show()
+
+                            val intent = Intent(this, CitizenHomeActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            // Database operation failed, handle the error
+                            Toast.makeText(this, "Failed to save data: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+        }
+
+
+    }
+    private fun getCurrentUser(){
+
+        val dbRef = FirebaseDatabase.getInstance().getReference("Users")
+        dbRef.orderByChild("email").equalTo(currentUser.email).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Get the user data from the snapshot
+                    val user = snapshot.children.first().getValue(User::class.java)
+                    if (user != null) {
+                        var name = user.fullName.toString()
+                    }
+                } else {
+                    // No user found with the given email
+                    Toast.makeText(applicationContext, "User not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getCurrentLocation() {
@@ -122,16 +196,6 @@ class CurrentLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
     }
-
-//    override fun onMapReady(googleMap: GoogleMap) {
-//        val location = LatLng(latitude.toDouble(), longitude.toDouble())
-//        googleMap.addMarker(
-//            MarkerOptions()
-//                .position(location)
-//                .title("Marker in Sydney")
-//        )
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
-//    }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap

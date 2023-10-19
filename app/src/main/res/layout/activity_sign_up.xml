@@ -152,7 +152,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
     <EditText
-        android:id="@+id/userRETYPASS"
+        android:id="@+id/userPhone"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -160,8 +160,8 @@
         android:drawableLeft="@drawable/baseline_security_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="@string/userRETYPASS"
-        android:inputType="textPassword"
+        android:hint="Enter Phone Number"
+        android:inputType="phone"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -176,9 +176,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:text="@string/check_box"
-        app:layout_constraintEnd_toEndOf="@+id/userRETYPASS"
-        app:layout_constraintStart_toStartOf="@+id/userRETYPASS"
-        app:layout_constraintTop_toBottomOf="@+id/userRETYPASS" />
+        app:layout_constraintEnd_toEndOf="@+id/userPhone"
+        app:layout_constraintStart_toStartOf="@+id/userPhone"
+        app:layout_constraintTop_toBottomOf="@+id/userPhone" />
 
     <Button
         android:id="@+id/btn_submit_C"

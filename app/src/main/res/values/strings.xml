@@ -54,4 +54,17 @@
         <item>Other</item>
     </string-array>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="btnReportPost">ReportInsert</string>
+    <string name="btnReportData">ReportFetch</string>
+
+    <!--signup page-->
+    <string name="estimate">Estimate Weight</string>
+    <string name="comAgreement">I agree to terms and conditions</string>
+    <string name="Remarks">Remarks</string>
+    <string name="btnInsert">Insert a proof</string>
+    <string name="btnPin">Pin Location</string>
+
+
+
 </resources>

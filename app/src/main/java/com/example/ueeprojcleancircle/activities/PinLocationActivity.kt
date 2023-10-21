@@ -1,5 +1,6 @@
 package com.example.ueeprojcleancircle.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -48,6 +49,7 @@ class PinLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private var longitude: Double = 0.0
     private var mapReady = false
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,6 +81,7 @@ class PinLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.pinLocation.setOnClickListener {
             var status = "Open"
             var userEmail = currentUser.email
+
             val pickupRequests = ScheduleForm(nic, userEmail, wasteType, estimatedWeight, date, remarks, latitude, longitude, status)
 
                 if (nic != null) {

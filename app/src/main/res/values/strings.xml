@@ -67,6 +67,18 @@
     <string name="btnInsert">Insert a proof</string>
     <string name="btnPin">Pin Location</string>
 
+    <!--schedule pickup page-->
+    <string name="schedulepickupheading">Schedule Pickup</string>
+    <string name="scheduleWeight">Estimated Weight</string>
+    <string name="scheduleRemark">Remarks</string>
+    <string name="scheduleBtnPin">Pin Location</string>
+    <string-array name="weight_type">
+        <item>Select Weight Range</item>
+        <item></item>
+        <item>Food Wastage</item>
+        <item>Plastic</item>
+        <item>E-Waste</item>
+    </string-array>
 
 
 </resources>

@@ -31,7 +31,7 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnSubmitC.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
 
             getFormData()
 

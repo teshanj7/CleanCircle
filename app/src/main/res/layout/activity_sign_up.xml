@@ -181,7 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userPhone" />
 
     <Button
-        android:id="@+id/btn_submit_C"
+        android:id="@+id/btnSubmit"
         android:layout_width="@dimen/btn_register"
         android:layout_height="@dimen/btn_register_height"
         android:layout_marginTop="44dp"
@@ -203,10 +203,10 @@
                 android:textAlignment="center"
                 android:textColor="#101010"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/btn_submit_C"
+                app:layout_constraintEnd_toEndOf="@+id/btnPinLocation"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btn_submit_C"
-                app:layout_constraintTop_toBottomOf="@+id/btn_submit_C" />
+                app:layout_constraintStart_toStartOf="@+id/btnPinLocation"
+                app:layout_constraintTop_toBottomOf="@+id/btnPinLocation" />
 
             <TextView
                 android:id="@+id/signuptoLogin"
@@ -218,7 +218,7 @@
                 android:textColor="#1E88E5"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/btn_submit_C" />
+                app:layout_constraintTop_toBottomOf="@+id/btnPinLocation" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -121,13 +121,16 @@ class ReportInsertActivity : AppCompatActivity() {
                         // You might want to set a default date or display an error message.
                     }
 
+                    binding.editRemarks.setText(dataSnapshot.child("remarks").value.toString())
+
+
                     reportImage = dataSnapshot.child("reportImage").value.toString()
                     val bytes = Base64.decode(reportImage, Base64.DEFAULT)
                     val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                     binding.imageViewInsert.setImageBitmap(bitmap)
                     binding.btnDel.visibility = View.VISIBLE
                     binding.btnUPin.visibility = View.VISIBLE
-                    binding.btnInsert.visibility = View.INVISIBLE
+                    binding.btnPin.visibility = View.INVISIBLE
                 } else {
                     Toast.makeText(this, "Report Not Found", Toast.LENGTH_LONG).show()
                 }
@@ -160,6 +163,11 @@ class ReportInsertActivity : AppCompatActivity() {
         val updatedDate = binding.editDate
         val updatedRemarks = binding.editRemarks
 
+        binding.btnDel.visibility = View.VISIBLE
+        binding.btnUPin.visibility = View.VISIBLE
+        binding.btnPin.visibility = View.INVISIBLE
+
+
         // Retrieve the values to be updated
         val updatedNameValue = updatedName.text.toString()
         val updatedEstimateValue = updatedEstimate.text.toString()
@@ -176,9 +184,7 @@ class ReportInsertActivity : AppCompatActivity() {
                 updatedName.text.clear()
                 updatedEstimate.text.clear()
                 reportImage = ""
-                binding.btnDel.visibility = View.INVISIBLE
-                binding.btnUPin.visibility = View.INVISIBLE
-                binding.btnInsert.visibility = View.VISIBLE
+
                 Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener { err ->

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/schedulepickupheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/schedulepickupheading"
+                android:textAlignment="center"
+                android:textColor="#0B0B0B"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.585"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="48dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintEnd_toStartOf="@+id/schedulepickupheading"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cleancircle_logo" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="355dp"
+                android:layout_height="590dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/schedulepickupheading"
+                app:srcCompat="@drawable/green_rectangle" />
+
+            <Spinner
+                android:id="@+id/selectWasterTypeSpinner"
+                android:layout_width="320dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="48dp"
+                android:backgroundTint="@color/white"
+                android:entries="@array/waste_type"
+                android:spinnerMode="dropdown"
+                android:textColor="#2D2F5C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/schedulepickupheading" />
+
+
+            <EditText
+                android:id="@+id/schRemarks"
+                android:layout_width="320dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/baseline_question_mark_24"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/scheduleRemark"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/schedulepickupheading"
+                app:layout_constraintHorizontal_bias="0.787"
+                app:layout_constraintStart_toStartOf="@+id/schedulepickupheading"
+                app:layout_constraintTop_toBottomOf="@+id/schEstWeight" />
+
+            <EditText
+                android:id="@+id/schEstWeight"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/input_bg"
+                android:drawableLeft="@drawable/baseline_shopping_bag_24"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/scheduleWeight"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/schRemarks"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectWasterTypeSpinner" />
+
+            <DatePicker
+                android:id="@+id/scheduleDate"
+                android:layout_width="320dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                android:headerBackground="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/schRemarks"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/schRemarks"
+                app:layout_constraintTop_toBottomOf="@+id/schRemarks" />
+
+            <Button
+                android:id="@+id/btnPinLocation"
+                android:layout_width="314dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/btnBlack"
+                android:text="@string/scheduleBtnPin"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.515"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleDate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

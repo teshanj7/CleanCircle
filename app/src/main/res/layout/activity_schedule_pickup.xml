@@ -7,79 +7,15 @@
     tools:layout_editor_absoluteX="-1dp"
     tools:layout_editor_absoluteY="49dp">
 
-
-    <TextView
-        android:id="@+id/selectWasterType"
-        android:layout_width="@dimen/createWidth"
-        android:layout_height="@dimen/createLength"
-        android:layout_marginTop="56dp"
-        android:gravity="center|left"
-        android:text="Select Waste Type"
-        android:textColor="#2D2F5C"
-        android:textSize="20sp"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/scheduleFragmentContainerView"
+        android:name="com.example.ueeprojcleancircle.activities.SchedulePickupFragment"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/selectWasterTypeSpinner"
-        android:layout_width="380dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/waste_type"
-        android:spinnerMode="dropdown"
-        android:textColor="#2D2F5C"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectWasterType" />
-
-    <EditText
-        android:id="@+id/estimatedWeight"
-        android:layout_width="252dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Estimated weight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectWasterTypeSpinner" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="233dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="36dp"
-        android:hint="date"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estimatedWeight" />
-
-    <EditText
-        android:id="@+id/remarks"
-        android:layout_width="232dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Remarks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
-
-    <Button
-        android:id="@+id/pinLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Select Location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remarks" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

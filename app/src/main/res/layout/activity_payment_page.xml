@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cvv" />
 
     <Button
-        android:id="@+id/btn_submit_C"
+        android:id="@+id/btnPinLocation"
         android:layout_width="@dimen/btn_register"
         android:layout_height="@dimen/btn_register_height"
         android:layout_marginTop="132dp"

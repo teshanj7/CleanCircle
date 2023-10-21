@@ -18,7 +18,6 @@ class LoginPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
-    private var accountType: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,28 +33,6 @@ class LoginPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val accountTypeSpinner = binding.spinner
-        val accountTypeAdapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.user_type, android.R.layout.simple_spinner_item
-        )
-        accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        accountTypeSpinner.adapter = accountTypeAdapter
-        accountTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                accountType = parent.getItemAtPosition(position).toString()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
-        }
-
         binding.btnLogin.setOnClickListener {
             val email = binding.userName.text.toString()
             val password = binding.userPASS.text.toString()
@@ -68,33 +45,12 @@ class LoginPageActivity : AppCompatActivity() {
                             // Check if user exists in database and has the correct account type
                             val currentUser = FirebaseAuth.getInstance().currentUser
 
-                            Log.i("Email", email.toString())
-                            Log.i("Account Type", accountType)
                             if (currentUser != null) {
-                                if (accountType == "Wastage Worker"){
-                                    if (email == "admin@gmail.com"){
-                                        val intent = Intent(
-                                            this@LoginPageActivity,
-                                            AdminHomeActivity::class.java
-                                        )
-                                        startActivity(intent)
-                                    }
-                                    else{
-                                        val intent = Intent(
-                                            this@LoginPageActivity,
-                                            WasteWorkerHomeActivity::class.java
-                                        )
-                                        startActivity(intent)
-                                    }
-
-                                }
-                                else if (accountType == "Citizen"){
                                     val intent = Intent(
                                         this@LoginPageActivity,
                                         CitizenHomeActivity::class.java
                                     )
                                     startActivity(intent)
-                                }
                                 val userQuery = databaseReference.orderByChild("email").equalTo(email)
                                 Log.i("TAG", userQuery.toString())
 

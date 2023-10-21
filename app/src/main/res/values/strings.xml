@@ -51,8 +51,10 @@
         <item>Polythene</item>
         <item>Food Wastage</item>
         <item>Plastic</item>
-        <item>Other</item>
+        <item>E-Waste</item>
     </string-array>
+
+
     <string name="title_activity_maps">MapsActivity</string>
 
     <string name="btnReportPost">ReportInsert</string>

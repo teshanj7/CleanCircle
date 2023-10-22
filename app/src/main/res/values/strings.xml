@@ -27,6 +27,7 @@
     <string name="PayBtn">PAY</string>
 
     <string name="LoginType">User Type:</string>
+    <string name="LoginTxt">Login</string>
     <string-array name="user_type">
         <item>Select User Type</item>
         <item>Citizen</item>
@@ -67,6 +68,10 @@
     <string name="btnInsert">Insert a proof</string>
     <string name="btnPin">Pin Location</string>
 
+    <!--dashboard page-->
+    <string name="DashboardTxt1">Citizen</string>
+    <string name="DashboardTxt2">Home</string>
+
     <!--schedule pickup page-->
     <string name="schedulepickupheading">Schedule Pickup</string>
     <string name="scheduleWeight">Estimated Weight</string>
@@ -80,5 +85,19 @@
         <item>E-Waste</item>
     </string-array>
 
+    <!--recycle page-->
+    <string name="recycleHeader">Recycle Waste</string>
+    <string name="recycleText">“Recycle your waste and make your environment the best!”</string>
+    <string name="recycleMethodsHeader">Recycling Methods</string>
+    <string name="recycleComposting">Composting</string>
+    <string name="recycleCompostText">To create compost, mix green materials such as kitchen scraps and grass clippings with brown materials like dry leaves and shredded paper in a compost bin. Maintain moisture by watering the pile occasionally, and turn it regularly to facilitate decomposition. This results in nutrient-rich compost, perfect for enriching garden soil and promoting plant growth naturally.</string>
+    <string name="recycleReuse">Reuse</string>
+    <string name="recycleReuseText">One effective way to recycle by reusing is to repurpose items for alternative functions, such as using glass jars as storage containers or turning old fabric into cleaning rags. By creatively transforming materials, we can reduce waste and contribute to a more sustainable environment.</string>
+    <string name="recycleEco">Use Eco-Friendly Products</string>
+    <string name="recycleEcoText">Recycling with eco-friendly products involves opting for biodegradable and recyclable items, such as compostable packaging and reusable shopping bags made from sustainable materials. By consciously choosing environmentally conscious alternatives, we can minimize the environmental impact of our consumption habits and promote a greener, more sustainable future.</string>
 
+    <!--compost page-->
+    <string name="compostTitle">Compost Tracker</string>
+    <string name="compostText">Input the estimated amount of waste you have in kilograms to generate the duration.</string>
+    <string name="compostText2">For more info about compost generation click below!</string>
 </resources>

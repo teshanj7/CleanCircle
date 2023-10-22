@@ -82,10 +82,10 @@
                 app:layout_constraintEnd_toEndOf="@+id/schedulepickupheading"
                 app:layout_constraintHorizontal_bias="0.787"
                 app:layout_constraintStart_toStartOf="@+id/schedulepickupheading"
-                app:layout_constraintTop_toBottomOf="@+id/schEstWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/schEstWaste" />
 
             <EditText
-                android:id="@+id/schEstWeight"
+                android:id="@+id/schEstWaste"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"

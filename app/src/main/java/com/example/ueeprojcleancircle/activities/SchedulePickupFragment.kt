@@ -116,7 +116,7 @@ class SchedulePickupFragment : Fragment() {
 
     private fun handlePinLocationButton(){
 
-        var estimatedWeight = binding.schEstWeight.text.toString()
+        var estimatedWeight = binding.schEstWaste.text.toString()
         var dateStr = binding.scheduleDate.toString()
         var remarks = binding.schRemarks.text.toString()
 

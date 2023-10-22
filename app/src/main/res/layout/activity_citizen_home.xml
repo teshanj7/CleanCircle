@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/logOutFarmerHomeUM"
+        android:id="@+id/logOutCitizen"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
@@ -130,13 +130,14 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/contributeCard"
@@ -158,10 +159,10 @@
 
                 <ImageView
                     android:id="@+id/image_view1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="123dp"
+                    android:layout_height="49dp"
                     android:contentDescription="Sold items icon"
-                    android:src="@drawable/baseline_credit_card_24"
+                    android:src="@drawable/baseline_create_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -180,7 +181,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_view1" />
 
@@ -207,10 +208,10 @@
 
                 <ImageView
                     android:id="@+id/image_view21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="123dp"
+                    android:layout_height="49dp"
                     android:contentDescription="Learn icon"
-                    android:src="@drawable/baseline_email_24"
+                    android:src="@drawable/baseline_report_problem_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView21"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -263,16 +264,17 @@
             app:cardCornerRadius="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/rectGreen">
 
                 <ImageView
                     android:id="@+id/image_view22"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="123dp"
+                    android:layout_height="49dp"
                     android:contentDescription="Add item icon"
-                    android:src="@drawable/baseline_date_range_24"
+                    android:src="@drawable/baseline_recycling_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView22"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -318,10 +320,10 @@
 
                 <ImageView
                     android:id="@+id/image_view23"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="123dp"
+                    android:layout_height="49dp"
                     android:contentDescription="Help icon"
-                    android:src="@drawable/baseline_location_on_24"
+                    android:src="@drawable/baseline_info_24"
                     app:layout_constraintBottom_toTopOf="@+id/textView23"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -350,34 +352,39 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="135dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:srcCompat="@drawable/cleancircle_logo" />
 
-        <TextView
-            android:id="@+id/totalFarmersFarmerUM"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/DashboardTxt1"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <TextView
-            android:id="@+id/totalBuyersFarmerUM"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginLeft="20dp"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/DashboardTxt2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

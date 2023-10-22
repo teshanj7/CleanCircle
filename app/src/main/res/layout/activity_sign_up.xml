@@ -127,10 +127,10 @@
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/userADD"
+                app:layout_constraintEnd_toEndOf="@+id/userPhone"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/userADD"
-                app:layout_constraintTop_toBottomOf="@+id/userADD" />
+                app:layout_constraintStart_toStartOf="@+id/userPhone"
+                app:layout_constraintTop_toBottomOf="@+id/userPhone" />
 
             <EditText
         android:id="@+id/userPASS"
@@ -157,7 +157,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/baseline_security_24"
+        android:drawableLeft="@drawable/baseline_local_phone_24"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Enter Phone Number"
@@ -166,9 +166,9 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/userPASS"
-        app:layout_constraintStart_toStartOf="@+id/userPASS"
-        app:layout_constraintTop_toBottomOf="@+id/userPASS" />
+        app:layout_constraintEnd_toEndOf="@+id/userADD"
+        app:layout_constraintStart_toStartOf="@+id/userADD"
+        app:layout_constraintTop_toBottomOf="@+id/userADD" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -176,9 +176,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:text="@string/check_box"
-        app:layout_constraintEnd_toEndOf="@+id/userPhone"
-        app:layout_constraintStart_toStartOf="@+id/userPhone"
-        app:layout_constraintTop_toBottomOf="@+id/userPhone" />
+        app:layout_constraintEnd_toEndOf="@+id/userPASS"
+        app:layout_constraintStart_toStartOf="@+id/userPASS"
+        app:layout_constraintTop_toBottomOf="@+id/userPASS" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -203,22 +203,23 @@
                 android:textAlignment="center"
                 android:textColor="#101010"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/btnPinLocation"
+                app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btnPinLocation"
-                app:layout_constraintTop_toBottomOf="@+id/btnPinLocation" />
+                app:layout_constraintStart_toStartOf="@+id/btnSubmit"
+                app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
             <TextView
                 android:id="@+id/signuptoLogin"
                 android:layout_width="50dp"
                 android:layout_height="18dp"
+                android:layout_marginStart="252dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/login_C"
                 android:textAlignment="center"
                 android:textColor="#1E88E5"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/btnPinLocation" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -17,6 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UEEProjCleanCircle"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.CompostTrackerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RecycleMethodsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RecycleHomeActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -30,13 +39,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.SignUpActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activities.PaymentPageActivity"
             android:exported="false" />
@@ -45,7 +48,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.LoginPageActivity"
             android:exported="false" />

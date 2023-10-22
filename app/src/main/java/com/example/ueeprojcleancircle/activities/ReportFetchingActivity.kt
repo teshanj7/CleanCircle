@@ -1,4 +1,4 @@
-//package com.example.ueeprojcleancircle.activities
+package com.example.ueeprojcleancircle.activities
 //
 //import android.content.Intent
 //import android.graphics.Bitmap
@@ -9,7 +9,10 @@
 //import android.widget.Toast
 //import androidx.activity.result.ActivityResult
 //import androidx.activity.result.contract.ActivityResultContracts
-//import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.ueeprojcleancircle.R
+
 //import com.example.ueeprojcleancircle.databinding.ActivityRudReportBinding
 //import com.example.ueeprojcleancircle.databinding.CreateReportBinding
 //import com.example.ueeprojcleancircle.models.ReportModel
@@ -18,7 +21,13 @@
 //import java.io.ByteArrayOutputStream
 //import java.lang.Exception
 //
-class ReportFetchingActivity {}
+class ReportFetchingActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_ud_report)
+    }
+}
 //class ReportFetchingActivity : AppCompatActivity() {
 //
 //    var reportImage:String? = ""

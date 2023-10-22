@@ -190,6 +190,8 @@ class ReportInsertActivity : AppCompatActivity() {
             .addOnFailureListener { err ->
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
+        val intent = Intent(this, PinLocationActivity::class.java)
+        startActivity(intent)
     }
 
     fun deleteReport(view: View) {

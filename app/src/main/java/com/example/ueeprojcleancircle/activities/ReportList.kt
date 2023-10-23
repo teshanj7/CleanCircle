@@ -33,7 +33,6 @@ class ReportList : AppCompatActivity() {
         reportArrayList = arrayListOf<ReportModel>()
         getReportData()
 
-
     }
 
     private fun getReportData() {

@@ -30,7 +30,7 @@ class CitizenHomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.CitizenReport.setOnClickListener {
-            val intent = Intent(this, ReportInsertActivity::class.java)
+            val intent = Intent(this, ReportPageActivity::class.java)
             startActivity(intent)
         }
 

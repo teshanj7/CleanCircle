@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ueeprojcleancircle.R
 import com.example.ueeprojcleancircle.databinding.CreateReportBinding
+import com.example.ueeprojcleancircle.databinding.FragmentReportFormBinding
 import com.example.ueeprojcleancircle.models.ReportModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -20,17 +21,17 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ReportInsertActivity : AppCompatActivity() {
+class ReportFInsertActivity : AppCompatActivity() {
 
     var reportImage: String? = ""
     var nodeId = ""
     private lateinit var dbRef: DatabaseReference
-    private lateinit var binding: CreateReportBinding
+    private lateinit var binding: FragmentReportFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = CreateReportBinding.inflate(layoutInflater)
+        binding = FragmentReportFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
@@ -41,13 +42,13 @@ class ReportInsertActivity : AppCompatActivity() {
     }
 
     fun insert_Location(view: View) {
-        val fullName = binding.editName
-        val estimateWeight = binding.editEstimate
-        val reportCategory = binding.editType
-        val reportDatePicker = binding.editDate
-        val remarks = binding.editRemarks
-        val reportCheckBox = binding.agreeCheckBox
-        val btnPinLocation = binding.btnPin
+        val fullName = binding.repoFName
+        val estimateWeight = binding.repoFEstWaste
+        val reportCategory = binding.repoFSelectWasterTypeSpinner
+        val reportDatePicker = binding.repoFScheduleDate
+        val remarks = binding.repoFRemarks
+        val reportCheckBox = binding.agreeFTC
+        val btnPinLocation = binding.btnFPinLocation
 
         val fullNameValue = fullName.text.toString()
         val estimateWeightValue = estimateWeight.text.toString()
@@ -56,10 +57,13 @@ class ReportInsertActivity : AppCompatActivity() {
         val remarksValue = remarks.text.toString()
         val reportCheckBoxValue = reportCheckBox.isChecked
 
-        // Create an Intent to open the PinLocationActivity
+        //Create an Intent to open the PinLocationActivity
         val intent = Intent(this, PinLocationReportActivity::class.java)
 
-        // Pass the report details as extras
+         //Create a new instance of the ReportFPinLocation fragment
+//        val reportFPinLocationFragment = ReportFPinLocation()
+
+         //Pass the report details as extras
         intent.putExtra("fullName", fullNameValue)
         intent.putExtra("estimateWeight", estimateWeightValue)
         intent.putExtra("reportCategory", reportCategoryValue)
@@ -67,9 +71,25 @@ class ReportInsertActivity : AppCompatActivity() {
         intent.putExtra("remarks", remarksValue)
         intent.putExtra("reportCheckBox", reportCheckBoxValue)
         intent.putExtra("reportImage", reportImage)
+//        val args = Bundle()
+//        args.putString("fullName", fullNameValue)
+//        args.putString("estimateWeight", estimateWeightValue)
+//        args.putString("reportCategory", reportCategoryValue)
+//        args.putString("reportDatePicker", reportDatePickerValue)
+//        args.putString("remarks", remarksValue)
+//        args.putString("remarks", remarksValue)
+//        args.putString("reportCheckBox", reportCheckBoxValue.toString())
+//        reportFPinLocationFragment.arguments = args
 
-        // Start the PinLocationActivity
+         //Start the PinLocationActivity
         startActivity(intent)
+
+        // Use the FragmentManager to replace the current fragment with the new one
+//        val fragmentManager = supportFragmentManager
+//        val transaction = fragmentManager.beginTransaction()
+//        transaction.replace(R.id.ReportFormFragment, reportFPinLocationFragment)
+//        transaction.addToBackStack(null)  // Optional: Add to back stack
+//        transaction.commit()
 
 //        dbRef = FirebaseDatabase.getInstance().getReference("Reports")
 //        val report = ReportModel(fullNameValue, estimateWeightValue, reportCategoryValue, reportDatePickerValue, reportImage, remarksValue)
@@ -100,7 +120,7 @@ class ReportInsertActivity : AppCompatActivity() {
                 myBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
                 val bytes = stream.toByteArray()
                 reportImage = Base64.encodeToString(bytes, Base64.DEFAULT)
-                binding.imageViewInsert.setImageBitmap(myBitmap)
+                binding.InsertFImg.setImageBitmap(myBitmap)
                 inputStream?.close()
                 Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show()
             } catch (ex: Exception) {
@@ -120,9 +140,9 @@ class ReportInsertActivity : AppCompatActivity() {
             dbRef = FirebaseDatabase.getInstance().getReference("Reports")
             dbRef.child(nodeId).get().addOnSuccessListener { dataSnapshot ->
                 if (dataSnapshot.exists()) {
-                    binding.editName.setText(dataSnapshot.child("fullName").value.toString())
-                    binding.editEstimate.setText(dataSnapshot.child("estimateWeight").value.toString())
-                    binding.editType.setSelection(getIndex(binding.editType, dataSnapshot.child("reportCategory").value.toString()))
+                    binding.repoFName.setText(dataSnapshot.child("fullName").value.toString())
+                    binding.repoFEstWaste.setText(dataSnapshot.child("estimateWeight").value.toString())
+                    binding.repoFSelectWasterTypeSpinner.setSelection(getIndex(binding.repoFSelectWasterTypeSpinner, dataSnapshot.child("reportCategory").value.toString()))
 
                     // Check if the "ReportDatePicker" value exists and contains "/"
                     val reportDatePickerValue = dataSnapshot.child("ReportDatePicker").value?.toString()
@@ -130,22 +150,22 @@ class ReportInsertActivity : AppCompatActivity() {
                         val date = reportDatePickerValue.split("/")
                         val dateCalendar = Calendar.getInstance()
                         dateCalendar.set(date[2].toInt(), date[1].toInt() - 1, date[0].toInt())
-                        binding.editDate.updateDate(dateCalendar.get(Calendar.YEAR), dateCalendar.get(Calendar.MONTH), dateCalendar.get(Calendar.DAY_OF_MONTH))
+                        binding.repoFScheduleDate.updateDate(dateCalendar.get(Calendar.YEAR), dateCalendar.get(Calendar.MONTH), dateCalendar.get(Calendar.DAY_OF_MONTH))
                     } else {
                         // Handle the case where the value is null or doesn't contain "/"
                         // You might want to set a default date or display an error message.
                     }
 
-                    binding.editRemarks.setText(dataSnapshot.child("remarks").value.toString())
+                    binding.repoFRemarks.setText(dataSnapshot.child("remarks").value.toString())
 
 
                     reportImage = dataSnapshot.child("reportImage").value.toString()
                     val bytes = Base64.decode(reportImage, Base64.DEFAULT)
                     val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    binding.imageViewInsert.setImageBitmap(bitmap)
-                    binding.btnDel.visibility = View.VISIBLE
-                    binding.btnUPin.visibility = View.VISIBLE
-                    binding.btnPin.visibility = View.INVISIBLE
+                    binding.InsertFImg.setImageBitmap(bitmap)
+                    binding.btnFDelete.visibility = View.VISIBLE
+                    binding.btnFUPinLocation.visibility = View.VISIBLE
+                    binding.btnFPinLocation.visibility = View.INVISIBLE
                 } else {
                     Toast.makeText(this, "Report Not Found", Toast.LENGTH_LONG).show()
                 }
@@ -172,15 +192,15 @@ class ReportInsertActivity : AppCompatActivity() {
 
     fun updateLocation(view: View) {
         // Retrieve the views
-        val updatedName = binding.editName
-        val updatedEstimate = binding.editEstimate
-        val updatedType = binding.editType
-        val updatedDate = binding.editDate
-        val updatedRemarks = binding.editRemarks
+        val updatedName = binding.repoFName
+        val updatedEstimate = binding.repoFEstWaste
+        val updatedType = binding.repoFSelectWasterTypeSpinner
+        val updatedDate = binding.repoFScheduleDate
+        val updatedRemarks = binding.repoFRemarks
 
-        binding.btnDel.visibility = View.VISIBLE
-        binding.btnUPin.visibility = View.VISIBLE
-        binding.btnPin.visibility = View.INVISIBLE
+        binding.btnFDelete.visibility = View.VISIBLE
+        binding.btnFUPinLocation.visibility = View.VISIBLE
+        binding.btnFPinLocation.visibility = View.INVISIBLE
 
 
         // Retrieve the values to be updated

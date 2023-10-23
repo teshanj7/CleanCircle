@@ -29,6 +29,10 @@ class CitizenHomeActivity : AppCompatActivity() {
             val intent = Intent(this, SchedulePickupActivity::class.java)
             startActivity(intent)
         }
+        binding.CitizenReport.setOnClickListener {
+            val intent = Intent(this, ReportPageActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.logOutCitizen.setOnClickListener {
             val builder = AlertDialog.Builder(this)

@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/bgimgo"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/input_bg"
+tools:context=".activities.ReportInsertActivity">
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bgimgo"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/input_bg"
-    tools:context=".activities.ReportInsertActivity">
+    android:layout_height="wrap_content">
 
 
     <Button
         android:id="@+id/btnDel"
-        android:layout_width="169dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
         android:onClick="deleteReport"
         android:text="Delete"
-        app:layout_constraintBottom_toTopOf="@+id/btnList"
-        app:layout_constraintEnd_toStartOf="@+id/btnPin"
-        app:layout_constraintHorizontal_bias="0.363"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnPin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agreeCheckBox"
-        tools:visibility="gone"/>
+        tools:visibility="gone" />
 
     <EditText
         android:id="@+id/editName"
@@ -108,7 +108,7 @@
     <DatePicker
         android:id="@+id/editDate"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="400dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:ems="10"
@@ -117,35 +117,33 @@
 
     <Button
         android:id="@+id/btnPin"
-        android:layout_width="164dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="7dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="20dp"
         android:onClick="insert_Location"
         android:text="@string/btnPin"
-        app:layout_constraintBottom_toTopOf="@+id/btnList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnDel"
-        app:layout_constraintTop_toBottomOf="@+id/agreeCheckBox"
-        tools:visibility="visible"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDel" />
 
     <Button
         android:id="@+id/btnUPin"
-        android:layout_width="183dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
         android:onClick="updateLocation"
         android:text="@string/btnPin"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnDel"
         app:layout_constraintTop_toBottomOf="@+id/agreeCheckBox"
         tools:visibility="gone" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/editRemarks"
         android:layout_width="350dp"
         android:layout_height="55dp"
@@ -197,17 +195,17 @@
 
     <Button
         android:id="@+id/btnList"
-        android:layout_width="124dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="20dp"
         android:onClick="showList"
         android:text="Reports"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPin" />
+        app:layout_constraintStart_toEndOf="@+id/btnPin"
+        app:layout_constraintTop_toBottomOf="@+id/btnUPin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

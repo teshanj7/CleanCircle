@@ -61,6 +61,38 @@
         <activity
             android:name=".activities.SchedulePickupActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".activities.ReportList"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ReportPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ReportInsertActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.PinLocationReportActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".activities.ReportFInsertActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".activities.ReportPinLocation"
+            android:exported="false">
+        </activity>
+
+<!--        <fragment-->
+<!--            android:name="com.example.ueeprojcleancircle.activities.ReportFPinLocation"-->
+<!--            android:label="ReportFPinLocationFragment" />-->
+
+
     </application>
 
 </manifest>

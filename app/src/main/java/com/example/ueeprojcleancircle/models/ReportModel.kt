@@ -6,7 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class ReportModel(
     val fullName: String?,
     val estimateWeight: String?,
-    val reportCategory: String?,
+    val wasteType: String?,
     val reportDatePicker: String?,
     val reportImage: String? = "",
     val remarks: String?,

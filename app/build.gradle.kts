@@ -67,4 +67,7 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.15.1")
 
+    implementation ("com.itextpdf:itextpdf:5.5.13")
+    implementation ("androidx.core:core:1.7.0")
+
 }

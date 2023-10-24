@@ -91,7 +91,7 @@ class SchedulePinLocation : Fragment(), OnMapReadyCallback {
             val userEmail = currentUser.email
             val date = arguments?.getString("date")
 
-            Log.e("date1", date.toString())
+            Log.e("date", date.toString())
             // Check if a request already exists for the logged in NIC
             nic?.let{
                 dbRef.child(it).addListenerForSingleValueEvent(object : ValueEventListener{

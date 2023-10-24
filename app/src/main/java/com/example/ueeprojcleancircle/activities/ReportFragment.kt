@@ -277,24 +277,31 @@ class ReportFragment : Fragment() {
         val updatedTypeValue = updatedType.selectedItem.toString()
         val updatedDateValue = String.format("%02d/%02d/%04d", updatedDate.dayOfMonth, updatedDate.month + 1, updatedDate.year)
         val updatedRemarksValue = updatedRemarks.text.toString()
+        val updatedNodeID = nodeId
 
-        // Update the item in the database
-        val updatedReport = ReportModel(updatedNameValue, updatedEstimateValue, updatedTypeValue, updatedDateValue, reportImage, updatedRemarksValue,"",0.0,0.0)
+        // Create a new instance of the ReportPinLocation fragment
+        val reportUpdatePinLocationFragment = ReportUpdatePinLocation()
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Reports")
-        dbRef.child(nodeId).setValue(updatedReport)
-            .addOnCompleteListener {
-                updatedName.text.clear()
-                updatedEstimate.text.clear()
-                reportImage = ""
+        val args = Bundle()
+        args.putString("nodeID", updatedNodeID)
+        args.putString("fullName", updatedNameValue)
+        args.putString("estimateWeight", updatedEstimateValue)
+        args.putString("reportCategory", updatedTypeValue)
+        args.putString("reportDatePicker", updatedDateValue)
+        args.putString("remarks", updatedRemarksValue)
 
-                Toast.makeText(requireContext(), "Data Updated Successfully", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener { err ->
-                Toast.makeText(requireContext(), "Error ${err.message}", Toast.LENGTH_LONG).show()
-            }
-        val intent = Intent(requireContext(), PinLocationActivity::class.java)
-        startActivity(intent)
+
+        // Pass the image data (reportImage) as well, if needed
+        args.putString("reportImage", reportImage)
+
+        reportUpdatePinLocationFragment.arguments = args
+
+        // Replace the current fragment with the new one
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.scheduleFragmentContainerViewR, reportUpdatePinLocationFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+
     }
 
     fun deleteReport(view: View) {

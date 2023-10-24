@@ -45,7 +45,7 @@ class ReportAdapter(private val ReportList:ArrayList<ReportModel>):
 
     override fun onBindViewHolder(holder: ReportHolder, position: Int) {
         val currentReport = ReportList[position]
-        holder.reportCategory.setText(currentReport.reportCategory.toString())
+        holder.reportCategory.setText(currentReport.wasteType.toString())
         holder.estimateWeight.setText(currentReport.estimateWeight.toString())
         holder.remarks.setText(currentReport.remarks.toString())
         val bytes = android.util.Base64.decode(currentReport.reportImage,android.util.Base64.DEFAULT)

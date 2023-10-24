@@ -46,6 +46,7 @@ class ReportFragment : Fragment() {
 
     private var wasteType: String = ""
     private lateinit var nic: String
+    private lateinit var getFullName: String
 
     var reportImage: String? = ""
     var nodeId = ""
@@ -105,7 +106,9 @@ class ReportFragment : Fragment() {
                         Log.i("user", user.toString())
                         if (user != null) {
                             nic = user.nic.toString()
+                            getFullName = user.fullName.toString()
                             Log.i("NIC Number", nic)
+                            Log.i("Full Name", getFullName)
                         }
                     } else {
                         // No user found with the given email
@@ -122,14 +125,14 @@ class ReportFragment : Fragment() {
     }
 
     private fun handlePinLocationButton() {
-        val fullName = binding.repoFName
+
         val estimateWeight = binding.repoFEstWaste
         val reportCategory = binding.repoFSelectWasterTypeSpinner
         val reportDatePicker = binding.repoFScheduleDate
         val remarks = binding.repoFRemarks
         val reportCheckBox = binding.agreeFTC
 
-        val fullNameValue = fullName.text.toString()
+
         val estimateWeightValue = estimateWeight.text.toString()
         val reportCategoryValue = reportCategory.selectedItem.toString()
         val reportDatePickerValue =
@@ -141,7 +144,7 @@ class ReportFragment : Fragment() {
         val reportPinLocationFragment = ReportPinLocation()
 
         val args = Bundle()
-        args.putString("fullName", fullNameValue)
+        args.putString("fullName", getFullName)
         args.putString("estimateWeight", estimateWeightValue)
         args.putString("reportCategory", reportCategoryValue)
         args.putString("reportDatePicker", reportDatePickerValue)
@@ -200,7 +203,7 @@ class ReportFragment : Fragment() {
             dbRef = FirebaseDatabase.getInstance().getReference("Reports")
             dbRef.child(nodeId).get().addOnSuccessListener { dataSnapshot ->
                 if (dataSnapshot.exists()) {
-                    binding.repoFName.setText(dataSnapshot.child("fullName").value.toString())
+
                     binding.repoFEstWaste.setText(dataSnapshot.child("estimateWeight").value.toString())
                     binding.repoFSelectWasterTypeSpinner.setSelection(
                         getIndex(
@@ -260,7 +263,7 @@ class ReportFragment : Fragment() {
 
     fun updateLocation(view: View) {
         // Retrieve the views
-        val updatedName = binding.repoFName
+
         val updatedEstimate = binding.repoFEstWaste
         val updatedType = binding.repoFSelectWasterTypeSpinner
         val updatedDate = binding.repoFScheduleDate
@@ -272,29 +275,36 @@ class ReportFragment : Fragment() {
 
 
         // Retrieve the values to be updated
-        val updatedNameValue = updatedName.text.toString()
+
         val updatedEstimateValue = updatedEstimate.text.toString()
         val updatedTypeValue = updatedType.selectedItem.toString()
         val updatedDateValue = String.format("%02d/%02d/%04d", updatedDate.dayOfMonth, updatedDate.month + 1, updatedDate.year)
         val updatedRemarksValue = updatedRemarks.text.toString()
+        val updatedNodeID = nodeId
 
-        // Update the item in the database
-        val updatedReport = ReportModel(updatedNameValue, updatedEstimateValue, updatedTypeValue, updatedDateValue, reportImage, updatedRemarksValue,"",0.0,0.0)
+        // Create a new instance of the ReportPinLocation fragment
+        val reportUpdatePinLocationFragment = ReportUpdatePinLocation()
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Reports")
-        dbRef.child(nodeId).setValue(updatedReport)
-            .addOnCompleteListener {
-                updatedName.text.clear()
-                updatedEstimate.text.clear()
-                reportImage = ""
+        val args = Bundle()
+        args.putString("nodeID", updatedNodeID)
+        args.putString("fullName", getFullName)
+        args.putString("estimateWeight", updatedEstimateValue)
+        args.putString("reportCategory", updatedTypeValue)
+        args.putString("reportDatePicker", updatedDateValue)
+        args.putString("remarks", updatedRemarksValue)
 
-                Toast.makeText(requireContext(), "Data Updated Successfully", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener { err ->
-                Toast.makeText(requireContext(), "Error ${err.message}", Toast.LENGTH_LONG).show()
-            }
-        val intent = Intent(requireContext(), PinLocationActivity::class.java)
-        startActivity(intent)
+
+        // Pass the image data (reportImage) as well, if needed
+        args.putString("reportImage", reportImage)
+
+        reportUpdatePinLocationFragment.arguments = args
+
+        // Replace the current fragment with the new one
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.scheduleFragmentContainerViewR, reportUpdatePinLocationFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+
     }
 
     fun deleteReport(view: View) {

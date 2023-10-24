@@ -42,7 +42,7 @@ class ReportFInsertActivity : AppCompatActivity() {
     }
 
     fun insert_Location(view: View) {
-        val fullName = binding.repoFName
+
         val estimateWeight = binding.repoFEstWaste
         val reportCategory = binding.repoFSelectWasterTypeSpinner
         val reportDatePicker = binding.repoFScheduleDate
@@ -50,7 +50,7 @@ class ReportFInsertActivity : AppCompatActivity() {
         val reportCheckBox = binding.agreeFTC
         val btnPinLocation = binding.btnFPinLocation
 
-        val fullNameValue = fullName.text.toString()
+
         val estimateWeightValue = estimateWeight.text.toString()
         val reportCategoryValue = reportCategory.selectedItem.toString()
         val reportDatePickerValue = "${reportDatePicker.dayOfMonth}/${reportDatePicker.month + 1}/${reportDatePicker.year}"
@@ -64,7 +64,7 @@ class ReportFInsertActivity : AppCompatActivity() {
 //        val reportFPinLocationFragment = ReportFPinLocation()
 
          //Pass the report details as extras
-        intent.putExtra("fullName", fullNameValue)
+
         intent.putExtra("estimateWeight", estimateWeightValue)
         intent.putExtra("reportCategory", reportCategoryValue)
         intent.putExtra("reportDatePicker", reportDatePickerValue)
@@ -140,7 +140,7 @@ class ReportFInsertActivity : AppCompatActivity() {
             dbRef = FirebaseDatabase.getInstance().getReference("Reports")
             dbRef.child(nodeId).get().addOnSuccessListener { dataSnapshot ->
                 if (dataSnapshot.exists()) {
-                    binding.repoFName.setText(dataSnapshot.child("fullName").value.toString())
+
                     binding.repoFEstWaste.setText(dataSnapshot.child("estimateWeight").value.toString())
                     binding.repoFSelectWasterTypeSpinner.setSelection(getIndex(binding.repoFSelectWasterTypeSpinner, dataSnapshot.child("reportCategory").value.toString()))
 
@@ -192,7 +192,7 @@ class ReportFInsertActivity : AppCompatActivity() {
 
     fun updateLocation(view: View) {
         // Retrieve the views
-        val updatedName = binding.repoFName
+
         val updatedEstimate = binding.repoFEstWaste
         val updatedType = binding.repoFSelectWasterTypeSpinner
         val updatedDate = binding.repoFScheduleDate
@@ -204,7 +204,7 @@ class ReportFInsertActivity : AppCompatActivity() {
 
 
         // Retrieve the values to be updated
-        val updatedNameValue = updatedName.text.toString()
+        val updatedNameValue = ""
         val updatedEstimateValue = updatedEstimate.text.toString()
         val updatedTypeValue = updatedType.selectedItem.toString()
         val updatedDateValue = String.format("%02d/%02d/%04d", updatedDate.dayOfMonth, updatedDate.month + 1, updatedDate.year)
@@ -216,7 +216,7 @@ class ReportFInsertActivity : AppCompatActivity() {
         dbRef = FirebaseDatabase.getInstance().getReference("Reports")
         dbRef.child(nodeId).setValue(updatedReport)
             .addOnCompleteListener {
-                updatedName.text.clear()
+
                 updatedEstimate.text.clear()
                 reportImage = ""
 

@@ -34,9 +34,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.io.File
 
-class ReportPinLocation : Fragment(), OnMapReadyCallback {
+class ReportUpdatePinLocation : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private var _binding: FragmentReportPinLocationBinding? = null
@@ -68,6 +67,7 @@ class ReportPinLocation : Fragment(), OnMapReadyCallback {
         currentUser = firebaseAuth.currentUser!!
         Log.d("User", currentUser.email.toString())
 
+        val UnodeID = arguments?.getString("nodeID")
         val fullName = arguments?.getString("fullName")
         val estimateWeight = arguments?.getString("estimateWeight")
         val reportCategory = arguments?.getString("reportCategory")
@@ -87,7 +87,7 @@ class ReportPinLocation : Fragment(), OnMapReadyCallback {
             val status = "Open"
             val userEmail = currentUser.email
 
-            val reportModel = ReportModel(
+            val updatedReport = ReportModel(
                 fullName,
                 estimateWeight,
                 reportCategory,
@@ -99,36 +99,14 @@ class ReportPinLocation : Fragment(), OnMapReadyCallback {
                 longitude
             )
 
-            val dbReference = dbRef.push() // Create a new unique key
-            dbReference.setValue(reportModel)
+            dbRef = FirebaseDatabase.getInstance().getReference("Reports")
+            dbRef.child(UnodeID.toString()).setValue(updatedReport)
                 .addOnCompleteListener {
-                    Toast.makeText(requireContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Data Updated Successfully", Toast.LENGTH_LONG).show()
                 }
                 .addOnFailureListener { err ->
                     Toast.makeText(requireContext(), "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }
-
-            val pdfFile = File(requireContext().getExternalFilesDir(null), "report.pdf")
-            val pdfFilePath = pdfFile.absolutePath
-
-            val bundle = Bundle()
-            bundle.putString("fullName", fullName)
-            bundle.putString("estimateWeight", estimateWeight)
-            bundle.putString("reportCategory", reportCategory)
-            bundle.putString("reportDatePicker", reportDatePicker)
-            bundle.putString("remarks", remarks)
-            bundle.putString("reportImage", reportImage)
-            bundle.putString("pdfFilePath", pdfFilePath) // Replace with the actual path
-
-            // Create the PdfDownloadFragment and set the arguments
-            val pdfDownloadFragment = PdfDownloadFragment()
-            pdfDownloadFragment.arguments = bundle
-
-            // Fragment transaction to switch to PdfDownloadFragment
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.scheduleFragmentContainerViewR, pdfDownloadFragment)
-            transaction.addToBackStack(null) // Optionally add to the back stack
-            transaction.commit()
         }
     }
 

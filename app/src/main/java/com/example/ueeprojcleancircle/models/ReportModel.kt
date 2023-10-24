@@ -10,11 +10,12 @@ data class ReportModel(
     val reportDatePicker: String?,
     val reportImage: String? = "",
     val remarks: String?,
+    val status: String?,
     val latitude: Double,
     val longitude: Double
 ) {
     // Add an empty no-argument constructor
-    constructor() : this("", "", "", "", "", "", 0.0, 0.0)
+    constructor() : this("", "", "", "", "", "","Open", 0.0, 0.0)
 }
 
 

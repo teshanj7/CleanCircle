@@ -35,7 +35,7 @@ class ReportAdapter(private val ReportList:ArrayList<ReportModel>):
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportHolder {
-        val reportView = LayoutInflater.from(parent.context).inflate(R.layout.report,parent,false)
+        val reportView = LayoutInflater.from(parent.context).inflate(R.layout.activity_report,parent,false)
         return ReportHolder(reportView,mListner)
     }
 

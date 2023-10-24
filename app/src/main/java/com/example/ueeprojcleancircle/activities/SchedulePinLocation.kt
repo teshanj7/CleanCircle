@@ -30,8 +30,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class SchedulePinLocation : Fragment(), OnMapReadyCallback {
 
@@ -48,7 +51,7 @@ class SchedulePinLocation : Fragment(), OnMapReadyCallback {
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     private var mapReady = false
-
+    private var hasExistingRequest = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,37 +68,58 @@ class SchedulePinLocation : Fragment(), OnMapReadyCallback {
         currentUser = firebaseAuth.currentUser!!
         Log.d("User", currentUser.email.toString())
 
-        val estimatedWeight = arguments?.getString("estimatedWeight")
-        val wasteType = arguments?.getString("wasteType")
-        val date = arguments?.getString("dateStr")
-        val remarks = arguments?.getString("remarks")
-        val nic = arguments?.getString("nic")
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
         dbRef = FirebaseDatabase.getInstance().getReference("PickupRequests")
 
+        // Getting the location
         getCurrentLocation()
 
+        // Getting the map fragment and initializing the map
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+
+        // Button click listener for pinning the location and saving data to the database
         binding.pinLocation.setOnClickListener {
-            var status = "Open"
-            var userEmail = currentUser.email
+            // Getting data from arguments and UI
+            val estimatedWeight = arguments?.getString("estimatedWeight")
+            val wasteType = arguments?.getString("wasteType")
+            val remarks = arguments?.getString("remarks")
+            val nic = arguments?.getString("nic")
+            val status = "Open"
+            val userEmail = currentUser.email
+            val date = arguments?.getString("date")
 
-            val pickupRequests = ScheduleForm(nic, userEmail, wasteType, estimatedWeight, date, remarks, latitude, longitude, status)
-
-            if (nic != null) {
-                dbRef.child(nic).setValue(pickupRequests).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(requireContext(), "Your pickup request was successful", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(requireContext(), CitizenHomeActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(requireContext(), "Failed to save data: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+            Log.e("date1", date.toString())
+            // Check if a request already exists for the logged in NIC
+            nic?.let{
+                dbRef.child(it).addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot.exists()){
+                            hasExistingRequest = true
+                            Toast.makeText(requireContext(), "You already have an active schedule request!", Toast.LENGTH_LONG).show()
+                        }else{
+                            val pickupRequests = ScheduleForm(nic, userEmail, wasteType, estimatedWeight, date.toString(), remarks, latitude, longitude, status)
+                            //storing data in the db
+                            dbRef.child(it).setValue(pickupRequests).addOnCompleteListener { task ->
+                                if(task.isSuccessful){
+                                    Toast.makeText(requireContext(), "Your pickup request was submitted successfully!", Toast.LENGTH_LONG).show()
+                                    val intent = Intent(requireContext(), CitizenHomeActivity::class.java)
+                                    startActivity(intent)
+                                }else{
+                                    Toast.makeText(requireContext(), "Failed to save data: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                     }
-                }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
+
         }
     }
 

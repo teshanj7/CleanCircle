@@ -46,6 +46,7 @@ class ReportFragment : Fragment() {
 
     private var wasteType: String = ""
     private lateinit var nic: String
+    private lateinit var getFullName: String
 
     var reportImage: String? = ""
     var nodeId = ""
@@ -105,7 +106,9 @@ class ReportFragment : Fragment() {
                         Log.i("user", user.toString())
                         if (user != null) {
                             nic = user.nic.toString()
+                            getFullName = user.fullName.toString()
                             Log.i("NIC Number", nic)
+                            Log.i("Full Name", getFullName)
                         }
                     } else {
                         // No user found with the given email
@@ -122,14 +125,14 @@ class ReportFragment : Fragment() {
     }
 
     private fun handlePinLocationButton() {
-        val fullName = binding.repoFName
+
         val estimateWeight = binding.repoFEstWaste
         val reportCategory = binding.repoFSelectWasterTypeSpinner
         val reportDatePicker = binding.repoFScheduleDate
         val remarks = binding.repoFRemarks
         val reportCheckBox = binding.agreeFTC
 
-        val fullNameValue = fullName.text.toString()
+
         val estimateWeightValue = estimateWeight.text.toString()
         val reportCategoryValue = reportCategory.selectedItem.toString()
         val reportDatePickerValue =
@@ -141,7 +144,7 @@ class ReportFragment : Fragment() {
         val reportPinLocationFragment = ReportPinLocation()
 
         val args = Bundle()
-        args.putString("fullName", fullNameValue)
+        args.putString("fullName", getFullName)
         args.putString("estimateWeight", estimateWeightValue)
         args.putString("reportCategory", reportCategoryValue)
         args.putString("reportDatePicker", reportDatePickerValue)
@@ -200,7 +203,7 @@ class ReportFragment : Fragment() {
             dbRef = FirebaseDatabase.getInstance().getReference("Reports")
             dbRef.child(nodeId).get().addOnSuccessListener { dataSnapshot ->
                 if (dataSnapshot.exists()) {
-                    binding.repoFName.setText(dataSnapshot.child("fullName").value.toString())
+
                     binding.repoFEstWaste.setText(dataSnapshot.child("estimateWeight").value.toString())
                     binding.repoFSelectWasterTypeSpinner.setSelection(
                         getIndex(
@@ -260,7 +263,7 @@ class ReportFragment : Fragment() {
 
     fun updateLocation(view: View) {
         // Retrieve the views
-        val updatedName = binding.repoFName
+
         val updatedEstimate = binding.repoFEstWaste
         val updatedType = binding.repoFSelectWasterTypeSpinner
         val updatedDate = binding.repoFScheduleDate
@@ -272,7 +275,7 @@ class ReportFragment : Fragment() {
 
 
         // Retrieve the values to be updated
-        val updatedNameValue = updatedName.text.toString()
+
         val updatedEstimateValue = updatedEstimate.text.toString()
         val updatedTypeValue = updatedType.selectedItem.toString()
         val updatedDateValue = String.format("%02d/%02d/%04d", updatedDate.dayOfMonth, updatedDate.month + 1, updatedDate.year)
@@ -284,7 +287,7 @@ class ReportFragment : Fragment() {
 
         val args = Bundle()
         args.putString("nodeID", updatedNodeID)
-        args.putString("fullName", updatedNameValue)
+        args.putString("fullName", getFullName)
         args.putString("estimateWeight", updatedEstimateValue)
         args.putString("reportCategory", updatedTypeValue)
         args.putString("reportDatePicker", updatedDateValue)

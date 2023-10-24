@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
+import java.util.Calendar
 
 class SchedulePickupFragment : Fragment() {
 
@@ -114,35 +116,42 @@ class SchedulePickupFragment : Fragment() {
 
 
 
-    private fun handlePinLocationButton(){
+    private fun handlePinLocationButton() {
+        val estimatedWeight = binding.schEstWaste.text.toString()
+        val remarks = binding.schRemarks.text.toString()
 
-        var estimatedWeight = binding.schEstWaste.text.toString()
-        var dateStr = binding.scheduleDate.toString()
-        var remarks = binding.schRemarks.text.toString()
+        // Get the DatePicker
+        val datePicker = binding.scheduleDate
+        val day = datePicker.dayOfMonth
+        val month = datePicker.month + 1
+        val year = datePicker.year
 
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd") // Adjust the date format as per your input
-        var date: Date? = null
-        try {
-            date = dateFormat.parse(dateStr)
-        } catch (e: Exception) {
-            // Handle the exception or show an error message if date parsing fails
+        val date = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month, year)
+
+        Log.e("date", date)
+
+        if (date != null) {
+            val bundle = Bundle()
+            bundle.putString("estimatedWeight", estimatedWeight)
+            bundle.putString("wasteType", wasteType)
+            bundle.putString("date", date) // Use the formatted date here
+            bundle.putString("remarks", remarks)
+            bundle.putString("nic", nic)
+
+            val schedulePinLocationFragment = SchedulePinLocation()
+            schedulePinLocationFragment.arguments = bundle
+
+            // Replace the current fragment with the new one
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.scheduleFragmentContainerView, schedulePinLocationFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        } else {
+            Log.e("DateError", "Date is null after parsing")
+            Toast.makeText(requireContext(), "Unable", Toast.LENGTH_SHORT).show()
         }
-
-        val bundle = Bundle()
-        bundle.putString("estimatedWeight", estimatedWeight)
-        bundle.putString("wasteType", wasteType)
-        bundle.putString("dateStr", dateStr)
-        bundle.putString("remarks", remarks)
-        bundle.putString("nic", nic)
-
-        val schedulePinLocationFragment = SchedulePinLocation()
-        schedulePinLocationFragment.arguments = bundle
-
-        // Replace the current fragment with the new one
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.scheduleFragmentContainerView, schedulePinLocationFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-
     }
+
+
+
 }

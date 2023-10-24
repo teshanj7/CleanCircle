@@ -63,7 +63,7 @@ class PinLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val estimatedWeight = intent.getStringExtra("estimatedWeight")
         val wasteType = intent.getStringExtra("wasteType")
-        val date = intent.getStringExtra("dateStr")
+        val date = intent.getStringExtra("date")
         val remarks = intent.getStringExtra("remarks")
         val nic = intent.getStringExtra("nic")
 

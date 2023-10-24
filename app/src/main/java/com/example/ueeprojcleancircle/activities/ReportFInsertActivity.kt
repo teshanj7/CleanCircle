@@ -211,7 +211,7 @@ class ReportFInsertActivity : AppCompatActivity() {
         val updatedRemarksValue = updatedRemarks.text.toString()
 
         // Update the item in the database
-        val updatedReport = ReportModel(updatedNameValue, updatedEstimateValue, updatedTypeValue, updatedDateValue, reportImage, updatedRemarksValue,0.0,0.0)
+        val updatedReport = ReportModel(updatedNameValue, updatedEstimateValue, updatedTypeValue, updatedDateValue, reportImage, updatedRemarksValue,"Open",0.0,0.0)
 
         dbRef = FirebaseDatabase.getInstance().getReference("Reports")
         dbRef.child(nodeId).setValue(updatedReport)

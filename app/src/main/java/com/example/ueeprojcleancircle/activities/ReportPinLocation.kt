@@ -93,6 +93,7 @@ class ReportPinLocation : Fragment(), OnMapReadyCallback {
                 reportDatePicker,
                 reportImage,
                 remarks,
+                status,
                 latitude,
                 longitude
             )

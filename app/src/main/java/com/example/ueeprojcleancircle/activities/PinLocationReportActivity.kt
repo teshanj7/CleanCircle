@@ -91,6 +91,7 @@ class PinLocationReportActivity : AppCompatActivity(), OnMapReadyCallback {
                 reportDatePicker,
                 reportImage,
                 remarks,
+                status,
                 latitude,
                 longitude
             )

@@ -122,19 +122,20 @@ class SchedulePickupFragment : Fragment() {
 
         // Get the DatePicker
         val datePicker = binding.scheduleDate
-        val day = datePicker.dayOfMonth
-        val month = datePicker.month + 1
-        val year = datePicker.year
+        val datePickerValue = "${datePicker.dayOfMonth}/${datePicker.month + 1}/${datePicker.year}"
+//        val day = datePicker.dayOfMonth
+//        val month = datePicker.month + 1
+//        val year = datePicker.year
 
-        val date = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month, year)
+//        val date = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month, year)
 
-        Log.e("date", date)
+        Log.e("date", datePickerValue)
 
-        if (date != null) {
+        if (datePickerValue != null) {
             val bundle = Bundle()
             bundle.putString("estimatedWeight", estimatedWeight)
             bundle.putString("wasteType", wasteType)
-            bundle.putString("date", date) // Use the formatted date here
+            bundle.putString("date", datePickerValue) // Use the formatted date here
             bundle.putString("remarks", remarks)
             bundle.putString("nic", nic)
 

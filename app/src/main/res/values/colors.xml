@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="btnBlack">#2B2B2B</color>
     <color name="rectGreen">#4CAF50</color>
+    <color name="BtnDanger">#FF1100</color>
 </resources>

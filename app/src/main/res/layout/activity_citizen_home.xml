@@ -67,7 +67,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/DBfullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -82,6 +82,7 @@
 
 
             <Button
+                android:id="@+id/btnReqActive"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
@@ -95,7 +96,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/buttonEditProfileFarmer"
+                android:id="@+id/buttonEditProfile"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="15dp"

@@ -30,6 +30,10 @@ class RecycleHomeActivity : AppCompatActivity() {
             val intent = Intent(this, CompostTrackerActivity::class.java)
             startActivity(intent)
         }
+        binding.btnReportPage.setOnClickListener {
+            val intent = Intent(this, ReportList::class.java)
+            startActivity(intent)
+        }
 
     }
 }

@@ -11,7 +11,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ueeprojcleancircle.R
-import com.example.ueeprojcleancircle.databinding.CreateReportBinding
+import com.example.ueeprojcleancircle.databinding.ActivityCreateReportUBinding
 import com.example.ueeprojcleancircle.databinding.FragmentReportFormBinding
 import com.example.ueeprojcleancircle.models.ReportModel
 import com.google.firebase.database.DatabaseReference

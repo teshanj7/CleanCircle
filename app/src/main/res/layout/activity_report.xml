@@ -16,26 +16,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/vImg"
-            android:layout_width="175dp"
-            android:layout_height="183dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="166dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/VEsWeight"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.019"
             app:srcCompat="@drawable/cleancircle_logo" />
 
         <TextView
             android:id="@+id/VWtype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="140dp"
             android:text="Waste Type"
             android:textStyle="bold"
@@ -61,15 +64,14 @@
             android:id="@+id/VRemark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="155dp"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="284dp"
             android:text="Remarks"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/vImg"
-            app:layout_constraintTop_toBottomOf="@+id/DEWeight" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vImg" />
 
         <EditText
             android:id="@+id/DType"
@@ -78,6 +80,9 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/custom_edittext_background"
+            android:inputType="none"
+            android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/vImg"
@@ -90,6 +95,9 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/custom_edittext_background"
+            android:inputType="none"
+            android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/vImg"
@@ -97,14 +105,18 @@
 
         <EditText
             android:id="@+id/DRemark"
-            android:layout_width="174dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="30dp"
+            android:layout_width="354dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_edittext_background"
+            android:inputType="none"
+            android:focusable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/vImg"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/VRemark" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

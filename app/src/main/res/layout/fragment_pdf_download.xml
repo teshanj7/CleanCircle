@@ -6,10 +6,47 @@
     android:padding="16dp"
     tools:context=".activities.PdfDownloadFragment">
 
+    <!-- Logo Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        app:srcCompat="@drawable/cleancircle_logo" />
+
+    <TextView
+        android:id="@+id/reportheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:text="Download Your Report From Here"
+        android:textAlignment="center"
+        android:textColor="#0B0B0B"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/instructionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reportheading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text=' "In your future usage, you can download a PDF file by clicking the button below:"'
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#008000"
+    />
+
     <Button
         android:id="@+id/downloadButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Download PDF"
-        android:layout_centerInParent="true" />
+        android:layout_height="60dp"
+        android:layout_below="@id/instructionTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Download Your Report" />
 </RelativeLayout>

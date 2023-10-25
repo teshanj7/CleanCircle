@@ -11,7 +11,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ueeprojcleancircle.R
-import com.example.ueeprojcleancircle.databinding.CreateReportBinding
+import com.example.ueeprojcleancircle.databinding.ActivityCreateReportUBinding
 import com.example.ueeprojcleancircle.models.ReportModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -25,12 +25,12 @@ class ReportInsertActivity : AppCompatActivity() {
     var reportImage: String? = ""
     var nodeId = ""
     private lateinit var dbRef: DatabaseReference
-    private lateinit var binding: CreateReportBinding
+    private lateinit var binding: ActivityCreateReportUBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = CreateReportBinding.inflate(layoutInflater)
+        binding = ActivityCreateReportUBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

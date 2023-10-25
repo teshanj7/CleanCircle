@@ -8,15 +8,41 @@
     tools:layout_editor_absoluteX="-1dp"
     tools:layout_editor_absoluteY="49dp">
 
+    <TextView
+        android:id="@+id/reportheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Pin Location"
+        android:textAlignment="center"
+        android:textColor="#0B0B0B"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/reportheading"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cleancircle_logo" />
+
     <ImageView
         android:id="@+id/reportFormOutline"
         android:layout_width="346dp"
         android:layout_height="568dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/green_rectangle" />
 
     <fragment
@@ -34,8 +60,8 @@
         android:id="@+id/pinLocation"
         android:layout_width="271dp"
         android:layout_height="57dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/btnBlack"
         android:text="Pin Location"
         android:textSize="20sp"

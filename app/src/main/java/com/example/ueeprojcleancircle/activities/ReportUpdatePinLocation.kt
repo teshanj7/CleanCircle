@@ -34,6 +34,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.io.File
 
 class ReportUpdatePinLocation : Fragment(), OnMapReadyCallback {
 
@@ -107,7 +108,31 @@ class ReportUpdatePinLocation : Fragment(), OnMapReadyCallback {
                 .addOnFailureListener { err ->
                     Toast.makeText(requireContext(), "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }
+
+            val pdfFile = File(requireContext().getExternalFilesDir(null), "report.pdf")
+            val pdfFilePath = pdfFile.absolutePath
+
+            val bundle = Bundle()
+            bundle.putString("fullName", fullName)
+            bundle.putString("estimateWeight", estimateWeight)
+            bundle.putString("reportCategory", reportCategory)
+            bundle.putString("reportDatePicker", reportDatePicker)
+            bundle.putString("remarks", remarks)
+            bundle.putString("reportImage", reportImage)
+            bundle.putString("pdfFilePath", pdfFilePath) // Replace with the actual path
+
+            // Create the PdfDownloadFragment and set the arguments
+            val pdfDownloadFragment = PdfDownloadFragment()
+            pdfDownloadFragment.arguments = bundle
+
+            // Fragment transaction to switch to PdfDownloadFragment
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.scheduleFragmentContainerViewR, pdfDownloadFragment)
+            transaction.addToBackStack(null) // Optionally add to the back stack
+            transaction.commit()
+
         }
+
     }
 
     override fun onDestroyView() {

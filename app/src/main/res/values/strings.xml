@@ -101,6 +101,7 @@
     <string name="compostText">Input the estimated amount of waste you have in kilograms to generate the duration.</string>
     <string name="compostText2">For more info about compost generation click below!</string>
 
+
     <!--active request page-->
     <string name="activeTitle">Active Pickup Request</string>
     <string name="activeName">E-mail</string>
@@ -109,5 +110,9 @@
     <string name="activeRemark">Remarks</string>
     <string name="activeBtn">Confirm Pickup</string>
 
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -7,8 +7,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.ueeprojcleancircle.R
 import com.example.ueeprojcleancircle.databinding.ActivityCitizenHomeBinding
+import com.example.ueeprojcleancircle.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class CitizenHomeActivity : AppCompatActivity() {
 
@@ -31,6 +36,11 @@ class CitizenHomeActivity : AppCompatActivity() {
         }
         binding.CitizenReport.setOnClickListener {
             val intent = Intent(this, ReportPageActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnReqActive.setOnClickListener {
+            val intent = Intent(this, ActivePickupRequestActivity::class.java)
             startActivity(intent)
         }
 
@@ -58,6 +68,31 @@ class CitizenHomeActivity : AppCompatActivity() {
         binding.recycle.setOnClickListener{
             val intent = Intent(this, RecycleHomeActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.buttonEditProfile.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set the full name to the DBfullName TextView
+        currentUser?.let { user ->
+            val dbRef = FirebaseDatabase.getInstance().getReference("Users")
+            dbRef.orderByChild("email").equalTo(user.email).addListenerForSingleValueEvent(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val user = snapshot.children.first().getValue(User::class.java)
+                        user?.let {
+                            binding.DBfullName.text = it.fullName
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@CitizenHomeActivity, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
 

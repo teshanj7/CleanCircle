@@ -166,11 +166,9 @@
 
             <Button
                 android:id="@+id/btnFUPinLocation"
-                android:layout_width="190dp"
+                android:layout_width="160dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="140dp"
-                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/btnBlack"
                 android:onClick="updateLocation"
@@ -179,27 +177,30 @@
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/reportFFormOutline"
                 app:layout_constraintEnd_toStartOf="@+id/btnFDelete"
+                app:layout_constraintHorizontal_bias="0.342"
                 app:layout_constraintStart_toStartOf="@+id/reportFFormOutline"
                 app:layout_constraintTop_toBottomOf="@+id/repoFRemarks"
-                tools:visibility="gone" />
+                app:layout_constraintVertical_bias="0.506"
+                tools:visibility="" />
 
             <Button
                 android:id="@+id/btnFDelete"
-                android:layout_width="135dp"
+                android:layout_width="160dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="140dp"
-                android:layout_marginEnd="78dp"
+                android:layout_marginEnd="85dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#E10A0A"
                 android:onClick="deleteReport"
                 android:text="Delete"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/reportFFormOutline"
                 app:layout_constraintEnd_toEndOf="@+id/reportFFormOutline"
+                app:layout_constraintHorizontal_bias="0.553"
                 app:layout_constraintStart_toEndOf="@+id/btnFPinLocation"
                 app:layout_constraintTop_toBottomOf="@+id/repoFRemarks"
+                app:layout_constraintVertical_bias="0.508"
                 tools:visibility="" />
 
             <ImageView

@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="49dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toStartOf="@+id/reportheading"
         app:layout_constraintHorizontal_bias="0.9"
@@ -36,8 +36,8 @@
 
     <ImageView
         android:id="@+id/reportFormOutline"
-        android:layout_width="346dp"
-        android:layout_height="568dp"
+        android:layout_width="375dp"
+        android:layout_height="565dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -48,9 +48,9 @@
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="304dp"
-        android:layout_height="536dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="360dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/reportFormOutline"
         app:layout_constraintStart_toStartOf="@+id/reportFormOutline"
         app:layout_constraintTop_toTopOf="@+id/reportFormOutline"

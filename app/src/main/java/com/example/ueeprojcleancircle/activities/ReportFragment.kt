@@ -18,6 +18,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ueeprojcleancircle.databinding.FragmentReportFormBinding
 import com.example.ueeprojcleancircle.databinding.FragmentSchedulePickupBinding
@@ -308,7 +309,27 @@ class ReportFragment : Fragment() {
     }
 
     fun deleteReport(view: View) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Reports")
-        dbRef.child(nodeId).removeValue()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete Report")
+        builder.setMessage("Are you sure you want to delete this report?")
+
+        builder.setPositiveButton("Delete") { _, _ ->
+            // User clicked the "Delete" button, proceed with the delete operation
+            dbRef = FirebaseDatabase.getInstance().getReference("Reports")
+            dbRef.child(nodeId).removeValue()
+
+            // Navigate to a different screen (e.g., HomeActivity) after the report is deleted
+            val intent = Intent(requireContext(), CitizenHomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        builder.setNegativeButton("Cancel") { _, _ ->
+            // User clicked the "Cancel" button, do nothing or dismiss the dialog
+        }
+
+        builder.create().show()
     }
+
+
+
 }

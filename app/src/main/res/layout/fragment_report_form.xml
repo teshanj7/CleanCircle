@@ -18,11 +18,11 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/reportpickupheading"
+                android:id="@+id/reportheading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="@string/schedulepickupheading"
+                android:text="@string/ReportHeading"
                 android:textAlignment="center"
                 android:textColor="#0B0B0B"
                 android:textSize="34sp"
@@ -37,7 +37,7 @@
                 android:layout_width="48dp"
                 android:layout_height="49dp"
                 android:layout_marginTop="28dp"
-                app:layout_constraintEnd_toStartOf="@+id/reportpickupheading"
+                app:layout_constraintEnd_toStartOf="@+id/reportheading"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,9 +52,9 @@
                 android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reportpickupheading"
+                app:layout_constraintTop_toBottomOf="@+id/reportheading"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/green_rectangle" />
 
             <Spinner
@@ -86,9 +86,9 @@
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/reportpickupheading"
+                app:layout_constraintEnd_toEndOf="@+id/reportheading"
                 app:layout_constraintHorizontal_bias="0.636"
-                app:layout_constraintStart_toStartOf="@+id/reportpickupheading"
+                app:layout_constraintStart_toStartOf="@+id/reportheading"
                 app:layout_constraintTop_toBottomOf="@+id/repoFScheduleDate" />
 
             <EditText
@@ -127,13 +127,13 @@
             <Button
                 android:id="@+id/btnFPinLocation"
                 android:layout_width="190dp"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/btnBlack"
                 android:onClick="insert_Location"
                 android:text="@string/scheduleBtnPin"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnFReports"
                 app:layout_constraintEnd_toEndOf="@+id/reportFFormOutline"
                 app:layout_constraintStart_toStartOf="@+id/reportFFormOutline"
@@ -159,15 +159,15 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="160dp"
                 android:text="@string/comAgreement"
-                app:layout_constraintEnd_toEndOf="@+id/reportpickupheading"
+                app:layout_constraintEnd_toEndOf="@+id/reportheading"
                 app:layout_constraintHorizontal_bias="0.51"
-                app:layout_constraintStart_toStartOf="@+id/reportpickupheading"
+                app:layout_constraintStart_toStartOf="@+id/reportheading"
                 app:layout_constraintTop_toBottomOf="@+id/repoFRemarks" />
 
             <Button
                 android:id="@+id/btnFUPinLocation"
                 android:layout_width="190dp"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="140dp"
                 android:layout_marginEnd="15dp"
@@ -175,7 +175,7 @@
                 android:backgroundTint="@color/btnBlack"
                 android:onClick="updateLocation"
                 android:text="@string/scheduleBtnPin"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/reportFFormOutline"
                 app:layout_constraintEnd_toStartOf="@+id/btnFDelete"
@@ -186,10 +186,10 @@
             <Button
                 android:id="@+id/btnFDelete"
                 android:layout_width="135dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="140dp"
-                android:layout_marginEnd="75dp"
+                android:layout_marginEnd="78dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#E10A0A"
                 android:onClick="deleteReport"
@@ -200,7 +200,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/reportFFormOutline"
                 app:layout_constraintStart_toEndOf="@+id/btnFPinLocation"
                 app:layout_constraintTop_toBottomOf="@+id/repoFRemarks"
-                tools:visibility="gone" />
+                tools:visibility="" />
 
             <ImageView
                 android:id="@+id/InsertFImg"

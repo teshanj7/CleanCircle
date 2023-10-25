@@ -7,7 +7,7 @@
     <dimen name="index_btn_login_height">65dp</dimen>
     <dimen name="index_btn_createaccount">320dp</dimen>
     <dimen name="index_btn_create_height">65dp</dimen>
-    <dimen name="index_sentence">25sp</dimen>
+    <dimen name="index_sentence">20sp</dimen>
     <dimen name="rect1Width">350dp</dimen>
     <dimen name="rect1Height">500dp</dimen>
 

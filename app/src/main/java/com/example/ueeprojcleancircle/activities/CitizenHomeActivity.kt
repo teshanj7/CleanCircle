@@ -75,6 +75,11 @@ class CitizenHomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.citizenInfo.setOnClickListener {
+            val intent = Intent(this, InfoHubActivity::class.java)
+            startActivity(intent)
+        }
+
         // Set the full name to the DBfullName TextView
         currentUser?.let { user ->
             val dbRef = FirebaseDatabase.getInstance().getReference("Users")

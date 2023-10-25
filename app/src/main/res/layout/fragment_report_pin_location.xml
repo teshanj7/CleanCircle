@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reportheading"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/green_rectangle" />
 
     <fragment
@@ -60,8 +60,8 @@
         android:id="@+id/pinLocation"
         android:layout_width="271dp"
         android:layout_height="57dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/btnBlack"
         android:text="Pin Location"
         android:textSize="20sp"

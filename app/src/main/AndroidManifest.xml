@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UEEProjCleanCircle"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.InfoHubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UpdateProfileActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

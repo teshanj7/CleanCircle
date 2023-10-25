@@ -110,6 +110,12 @@
     <string name="activeRemark">Remarks</string>
     <string name="activeBtn">Confirm Pickup</string>
 
+    <!--update account page-->
+    <string name="upd_Acc">Update Account</string>
+    <string name="upd_button">Update</string>
+
+    <!--InfoHub-->
+    <string name="infoPara">CleanCircle is an organization that works hard everyday to keep our environment clean. Our main objective is to connect citizens and waste workers well so the waste collection process is efficient. This application is proof for that.</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
